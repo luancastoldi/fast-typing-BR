@@ -1,0 +1,63 @@
+body{
+    background-color: #eeee;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title{
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.square{
+    text-align: center;
+    width: 100%;
+
+}
+.keyboard{
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+.font-key{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    padding: 10px;
+    border-color: black;
+    border-style: groove;
+}
+.btnStart{
+    text-align: center;
+    color: black;
+    margin-top: 30px;
+    padding: 0;
+}
+.font-btn{
+    font-size: 100px;
+    font-weight: bold;
+    border-radius: 10px;
+    border-style: none; 
+    color: black;
+    text-align: center;
+}
+.squareStyle{
+    height: 100%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    background-color: black;
+    border-radius: 10px;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+}
+
+.actualizado {
+    color: red;
+    font-weight: bold;
+  }
