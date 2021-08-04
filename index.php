@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/unsemantic-grid-responsive.css">
     <link rel="stylesheet" href="css/style.css">
     <script>
+
         var words = ["exótico", "acho", "melhor", "não", "vai", "ter", "aula", "hoje", "bom", "banho", "cedo", "melhor", "acento", "mulher", "viatura", "câmera", "paraíso", "pais", "país", "medo", "aguardo", "viúva", "arrumar", "congresso", "congelador", "espuma", "cabeleireiro", "maquiagem", "maquiadora", "estética", "esteticista", "malabarismo", "casa", "sótão", "enfurecido", "ferrugem", "amedrontar"];
         var like = 0;
         var deslike = -1;
@@ -17,7 +18,6 @@
                 console.log("ACABOU")
 
                 document.getElementById("text").disabled = true;
-
             }
         }
 
@@ -52,6 +52,8 @@
         function checkWord() {
             var getName = document.getElementById("text").value
             var getSort = document.getElementById("squareId").value
+            // console.log(getName)
+            // console.log(getSort)
 
             if (getName === getSort) {
 
@@ -78,15 +80,13 @@
 <body>
     <div class="grid-container">
 
-     
-
         <div class="grid-100 square">
-            <input type="text-area" disabled value="ATENÇÃO" id="squareId" class="squareStyle">
+            <input type="text-area" disabled value="Preparado ?" id="squareId" class="squareStyle">
         </div>
 
         <div class="grid-100 keyboard">
-            <input class="font-key" id="text" type="text" autocomplete="off" autofocus placeholder="Escreva aqui...">
-            <input type="button" onclick="location.reload()" value="REINICIAR">
+            <input class="font-key" id="text" type="text" autocomplete="off" autofocus>
+            <img src="images/restart.png" class="imgClick" alt="restart" onclick="location.reload()" >
         </div>
 
         <div class="grid-100 btnStart">
