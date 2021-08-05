@@ -8,28 +8,27 @@
     <link rel="stylesheet" href="css/unsemantic-grid-responsive.css">
     <link rel="stylesheet" href="css/style.css">
     <script>
-        var frases = ["exótico", "acho", "melhor", "não", "vai", "ter", "aula", "hoje", "bom", "banho", "cedo", "melhor", "acento", "mulher", "viatura", "câmera", "paraíso", "pais", "país", "medo", "aguardo", "viúva", "arrumar", "congresso", "congelador", "espuma", "cabeleireiro", "maquiagem", "maquiadora", "estética", "esteticista", "malabarismo", "casa", "sótão", "enfurecido", "ferrugem", "amedrontar"];
 
+        //0 setando variaveis
+        var frases = ["exótico", "acho", "melhor", "não", "vai", "ter", "aula", "hoje", "bom", "banho", "cedo", "melhor", "acento", "mulher", "viatura", "câmera", "paraíso", "pais", "país", "medo", "aguardo", "viúva", "arrumar", "congresso", "congelador", "espuma", "cabeleireiro", "maquiagem", "maquiadora", "estética", "esteticista", "malabarismo", "casa", "sótão", "enfurecido", "ferrugem", "amedrontar"];
         var like = 0;
         var deslike = -1;
         var firstIndex = []
         var selectOne = []
         var getShuffle
 
-        // function useEnter() {
-        //     document.addEventListener("keypress", function onEvent(event) {
-        //         if (event.key === "Enter") {
-        //             if (document.getElementById("text").disabled == false) {
+        //1 verifica se a tecla "espaço" foi clicada"
+        document.onkeydown = function(e) {
+            if (e.keyCode == 32) {
+                if (document.getElementById("text").disabled == false) {
+                    checkStart()
+                    checkFrases()
+                    openText()
+                }
+            }
+        };
 
-        //                 checkStart()
-        //                 checkFrases()
-        //                 openText()
-        //             }
-        //         }
-        //     });
-        // }
-
-
+        //2 verifica se o texto é igual ao "PRESSIONE ESPAÇO"
         function checkStart() {
             if (document.getElementById("btnS").innerText === "PRESSIONE ESPAÇO") {
                 startTimer()
@@ -37,62 +36,20 @@
             }
         }
 
-        function sortFrases() { //faz esse codigo apenas uma vez
-
-            getShuffle = frases.sort(() => Math.random() - 0.5)
-            firstIndex = " " + getShuffle[0]
-            selectOne = getShuffle.join(" ");
-            document.getElementById("squareId").value = selectOne
-        }
-
-        function setNewArray() {
-            firstIndex = " " + getShuffle[0]
-            selectOne = getShuffle.join(" ");
-            document.getElementById("squareId").value = selectOne
-
-        }
-
-        function checkEnd() {
-            if (document.getElementById("btnS").innerText === "FIM") {
-                document.getElementById("text").disabled = true;
-            }
-        }
-
-        function openText() {
-            document.getElementById("text").disabled = false;
-            document.getElementById("text").value = null;
-        }
-
-        document.onkeydown = function(e) {
-            if (e.keyCode == 32) {
-                if (document.getElementById("text").disabled == false) {
-
-                    checkStart()
-                    checkFrases()
-                    openText()
-                }
-
-            }
-        };
-
+        //3 checa se a palavra digita é igual a primeira palavra da array
         function checkFrases() {
 
             var getSort = document.getElementById("squareId").value
             var getName = document.getElementById("text").value
 
-            // console.log(firstIndex)
-            // console.log(getName)
-
             if (getName === firstIndex) {
 
-                getShuffle.shift()
+               
                 like = like + 1
                 document.getElementById('likeH').innerHTML = "✅ " + like
-
                 setNewArray()
-
+                
             } else {
-
                 deslike = deslike + 1
                 if (deslike > 0) {
                     document.getElementById('deslikeH').innerHTML = "❌ " + deslike
@@ -102,6 +59,35 @@
             var feitas = like + deslike
             document.getElementById('pontuacao').innerHTML = "Pontuação: " + pnts
             document.getElementById('feitas').innerHTML = "Palavras: " + feitas
+        }
+        //4 abre as caixas de texto
+        function openText() {
+            document.getElementById("text").disabled = false;
+            document.getElementById("text").value = null;
+        }
+
+        //5 enviar as frase aleatorias separaras por " " 
+        function sortFrases() { //faz esse codigo apenas uma vez
+            getShuffle = frases.sort(() => Math.random() - 0.5)
+            firstIndex = " " + getShuffle[0]
+            selectOne = getShuffle.join(" ");
+            document.getElementById("squareId").value = selectOne
+        }
+
+        //6 após acertar um nova array é adicionada
+        function setNewArray() {
+            getShuffle.shift() // remove o primeiro item da array
+            console.log(getShuffle) 
+            firstIndex = " " + getShuffle[0]
+            selectOne = getShuffle.join(" ");
+            document.getElementById("squareId").value = selectOne
+
+        }
+        //7 checa se o timer acabou === FIM  e desabilita a caixa de texto
+        function checkEnd() {
+            if (document.getElementById("btnS").innerText === "FIM") {
+                document.getElementById("text").disabled = true;
+            }
         }
     </script>
 
